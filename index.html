@@ -36,6 +36,7 @@
     --shadow-lg: 0 20px 60px rgba(28,58,58,0.12);
   }
 
+
   .filter-green{
     filter: brightness(0) saturate(100%) invert(20%) sepia(27%) saturate(616%) hue-rotate(131deg) brightness(94%) contrast(99%);
     fill: #1c3a3a;
@@ -614,38 +615,278 @@
   @keyframes fadeUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:none; } }
 
   /* ── RESPONSIVE ─────────────────────────── */
-  @media (max-width: 1100px) {
+
+  /* ── Tablet Landscape / Small Desktop ≤ 1280px ── */
+  @media (max-width: 1280px) {
+    nav { padding: 14px 40px; }
+    .hero { padding: 120px 40px 80px; }
+    .hero-inner { gap: 52px; }
+    .about, .how { padding: 80px 40px; }
+    .categories, .tech, .banner, .audience section, .testimonials, .pricing, .booking, .blog, .final-cta { padding-left: 40px; padding-right: 40px; }
+    .audience { padding: 80px 40px; }
+    .cat-grid { grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .footer-grid { gap: 40px; }
+    footer { padding: 80px 40px 40px; }
+  }
+
+  /* ── Tablet Portrait ≤ 1024px ── */
+  @media (max-width: 1024px) {
     nav { padding: 14px 28px; }
     .nav-links { display: none; }
-    .hero, .about, .how, .tech, .booking, .audience, .blog, .pricing, .testimonials, .categories { padding-left: 28px; padding-right: 28px; }
+    .nav-hamburger { display: flex; }
+
+    .hero { padding: 100px 28px 64px; min-height: auto; }
     .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-img-wrap img { height: 340px; }
+    .hero h1 { font-size: clamp(2.4rem, 5vw, 3.2rem); }
+    .hero-sub { max-width: 100%; }
+    .hero-right { display: block; }
+    .hero-img-wrap img { height: 400px; }
     .hero-float-card.card-2 { display: none; }
-    .about-grid, .how-grid, .booking-inner { grid-template-columns: 1fr; gap: 40px; }
-    .about-img-main img, .how-vis-main img { height: 320px; }
-    .cat-grid { grid-template-columns: repeat(3, 1fr); }
-    .aud-grid { grid-template-columns: repeat(2, 1fr); }
-    .testi-grid { grid-template-columns: 1fr; }
-    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
-    .price-card.popular { transform: none; }
-    .blog-grid { grid-template-columns: 1fr 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .trust-bar { padding: 18px 28px; gap: 24px; }
+    .hero-float-card.card-1 { left: -16px; bottom: -16px; padding: 14px 16px; }
+
+    .trust-bar { padding: 18px 28px; gap: 20px; flex-wrap: wrap; }
+
+    .about { padding: 72px 28px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-img-main img { height: 380px; }
+
+    .categories { padding: 72px 28px; }
+    .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    .how { padding: 72px 28px; }
+    .how-grid { grid-template-columns: 1fr; gap: 44px; }
+    .how-vis-main img { height: 380px; }
+
+    .tech { padding: 72px 28px; }
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .banner { padding: 72px 28px; background-attachment: scroll; }
+
+    .audience { padding: 72px 28px; }
+    .aud-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+
+    .testimonials { padding: 72px 28px; }
+    .testi-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .pricing { padding: 72px 28px; max-width: 100%; }
+    .pricing-grid { grid-template-columns: 1fr 1fr; max-width: 720px; gap: 18px; }
+    .price-card.popular { transform: none; grid-column: span 2; max-width: 360px; margin: 0 auto; }
+    .price-card.popular:hover { transform: translateY(-5px); }
+
+    .booking { padding: 72px 28px; }
+    .booking-inner { grid-template-columns: 1fr; gap: 44px; }
+    .booking-form { padding: 36px 32px; }
+
+    .blog { padding: 72px 28px; max-width: 100%; }
+    .blog-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .final-cta { padding: 80px 28px; }
+
+    footer { padding: 72px 28px 36px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .footer-brand { grid-column: span 2; }
+  }
+
+  /* ── Large Mobile ≤ 768px ── */
+  @media (max-width: 768px) {
+    .hero { padding: 90px 20px 56px; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero-sub { font-size: 0.95rem; }
+    .hero-img-wrap img { height: 320px; }
+    .hero-float-card.card-1 { display: none; }
+    .hero-btns { gap: 12px; }
+    .hero-btns .btn-gold, .hero-btns .btn-outline-teal { width: 100%; justify-content: center; }
+    .hero-trust { gap: 12px; }
+    .trust-divider { display: none; }
+
+    .trust-bar { gap: 16px; padding: 16px 20px; }
+    .tbar-item:nth-child(n+4) { display: none; }
+
+    .about { padding: 60px 20px; }
+    .about-img-main img { height: 280px; }
+    .about-bubble { right: -8px; bottom: -8px; padding: 14px 16px; }
+    .about-bubble-2 { left: -8px; top: -8px; }
+
+    .categories { padding: 60px 20px; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+
+    .how { padding: 60px 20px; }
+    .how-vis-main img { height: 280px; }
+
+    .tech { padding: 60px 20px; }
     .tech-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 2.2rem; }
-    .hero-btns, .hero-trust { flex-direction: column; gap: 10px; }
-    .cat-grid { grid-template-columns: 1fr 1fr; }
-    .aud-grid { grid-template-columns: 1fr; }
+
+    .banner { padding: 60px 20px; }
+    .banner-btns { flex-direction: column; align-items: center; gap: 12px; }
+    .banner-btns .btn-gold, .banner-btns .btn-outline-white { width: 100%; max-width: 320px; justify-content: center; }
+
+    .audience { padding: 60px 20px; }
+    .aud-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .testimonials { padding: 60px 20px; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .testi-stats { gap: 32px; }
+
+    .pricing { padding: 60px 20px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+    .price-card.popular { grid-column: span 1; max-width: 100%; transform: none; }
+
+    .booking { padding: 60px 20px; }
+    .booking-form { padding: 28px 22px; }
+
+    .blog { padding: 60px 20px; }
     .blog-grid { grid-template-columns: 1fr; }
-    .testi-stats { flex-direction: column; gap: 28px; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .fg-row { grid-template-columns: 1fr; }
-    .booking-form { padding: 26px 20px; }
-    .final-cta, .banner { padding: 70px 24px; }
-    .final-btns, .banner-btns { flex-direction: column; align-items: center; }
+
+    .final-cta { padding: 64px 20px; }
+    .final-btns { flex-direction: column; align-items: center; gap: 12px; }
+    .final-btns .btn-gold, .final-btns .btn-outline-white { width: 100%; max-width: 320px; justify-content: center; }
+
+    footer { padding: 60px 20px 30px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-brand { grid-column: span 1; }
+    .testi-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 28px; }
   }
+
+  /* ── Mobile ≤ 480px ── */
+  @media (max-width: 480px) {
+    nav { padding: 12px 16px; }
+    .nav-logo img { height: 36px; }
+    .nav-cta { padding: 9px 18px; font-size: 0.78rem; display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero { padding: 80px 16px 48px; }
+    .hero h1 { font-size: 2rem; letter-spacing: -0.01em; }
+    .hero-eyebrow { font-size: 0.66rem; padding: 6px 14px; }
+    .hero-sub { font-size: 0.9rem; }
+    .hero-img-wrap img { height: 260px; }
+    .hero-trust { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+    .trust-bar { gap: 14px; padding: 14px 16px; }
+    .tbar-item:nth-child(n+3) { display: none; }
+    .tbar-text { font-size: 0.76rem; }
+
+    .about { padding: 52px 16px; }
+    .about-bubble { display: none; }
+    .about-bubble-2 { display: none; }
+    .about-img-main img { height: 240px; }
+    .about-content p { font-size: 0.9rem; }
+    .apoint { padding: 14px 16px; }
+
+    .categories { padding: 52px 16px; }
+    .cat-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .cat-img { height: 140px; }
+    .cat-body { padding: 14px 12px 16px; }
+    .cat-quote { display: none; }
+
+    .how { padding: 52px 16px; }
+    .how-vis-main img { height: 240px; }
+    .step-item { padding: 14px; }
+    .step-num { width: 38px; height: 38px; }
+
+    .tech { padding: 52px 16px; }
+    .tech-card { padding: 28px 22px; }
+    .tech-badges-row { gap: 8px; }
+    .tech-badge { font-size: 0.72rem; padding: 6px 14px; }
+
+    .banner { padding: 52px 16px; }
+    .banner-content h2 { font-size: 1.8rem; }
+
+    .audience { padding: 52px 16px; }
+    .aud-grid { grid-template-columns: 1fr 1fr; }
+    .aud-img { height: 180px; }
+
+    .testimonials { padding: 52px 16px; }
+    .testi-card { padding: 24px 20px; }
+    .testi-stats { gap: 18px; }
+    .tstat-num { font-size: 2rem; }
+
+    .pricing { padding: 52px 16px; }
+    .price-card { padding: 30px 22px; }
+
+    .booking { padding: 52px 16px; }
+    .booking-form { padding: 22px 18px; border-radius: 24px; }
+    .fg-row { grid-template-columns: 1fr; }
+    .form-title { font-size: 1.1rem; }
+
+    .blog { padding: 52px 16px; }
+    .blog-body { padding: 18px 18px 20px; }
+    .blog-body h4 { font-size: 0.92rem; }
+
+    .final-cta { padding: 52px 16px; }
+    .final-cta h2 { font-size: 1.8rem; }
+
+    footer { padding: 52px 16px 28px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .footer-links { justify-content: center; }
+
+    .section-h { font-size: 1.7rem; }
+    .section-p { font-size: 0.9rem; }
+    .testi-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  }
+
+  /* ── Very Small Mobile ≤ 360px ── */
+  @media (max-width: 360px) {
+    .hero h1 { font-size: 1.75rem; }
+    .cat-grid { grid-template-columns: 1fr; }
+    .aud-grid { grid-template-columns: 1fr; }
+    .hero-img-wrap img { height: 220px; }
+    .nav-cta { display: none; }
+  }
+
+  /* ── NAV HAMBURGER ── */
+  .nav-hamburger {
+    display: none; flex-direction: column; justify-content: center;
+    gap: 5px; width: 40px; height: 40px; cursor: pointer;
+    border: none; background: none; padding: 6px;
+    border-radius: 10px; transition: background 0.2s;
+  }
+  .nav-hamburger:hover { background: var(--off-white); }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 2px; border-radius: 2px;
+    background: var(--ink); transition: all 0.3s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile menu drawer */
+  .nav-mobile-menu {
+    display: none; flex-direction: column;
+    position: fixed; top: 72px; left: 0; right: 0; z-index: 999;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 28px 28px;
+    box-shadow: var(--shadow-md);
+    gap: 4px;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .nav-mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-mobile-menu a {
+    display: block; padding: 13px 16px;
+    font-size: 0.92rem; font-weight: 600; color: var(--ink);
+    border-radius: 12px; transition: all 0.2s;
+  }
+  .nav-mobile-menu a:hover { background: var(--teal-pale); color: var(--teal-deep); }
+  .nav-mobile-menu .mob-cta {
+    margin-top: 10px; background: var(--ink); color: var(--white);
+    text-align: center; padding: 14px 16px; border-radius: 50px;
+    font-weight: 700; font-size: 0.9rem;
+  }
+  .nav-mobile-menu .mob-cta:hover { background: var(--teal-deep); }
+
+  @media (max-width: 1024px) {
+    .nav-hamburger { display: flex; }
+    .nav-mobile-menu { display: flex; }
+  }
+
+
 </style>
 </head>
 <body>
@@ -663,7 +904,20 @@
     <a href="#blog">Insights</a>
   </div>
   <a href="#booking" class="nav-cta">Start Your Journey</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile-menu" id="mobileMenu">
+  <a href="#about" class="mob-link">About</a>
+  <a href="#categories" class="mob-link">Wellness</a>
+  <a href="#how" class="mob-link">How It Works</a>
+  <a href="#pricing" class="mob-link">Pricing</a>
+  <a href="#blog" class="mob-link">Insights</a>
+  <a href="#booking" class="mob-cta">Start Your Journey</a>
+</div>
+
+
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1314,7 +1568,7 @@
     <div class="fcol">
       <h5>Contact &amp; Support</h5>
       <ul>
-        <li><a href="#">hello@nyrawellbeing.com</a></li>
+        <li><a href="#"><span class="__cf_email__" data-cfemail="553d3039393a153b2c27342230393937303c3b327b363a38">[email&#160;protected]</span></a></li>
         <li><a href="#">www.nyrawellbeing.com</a></li>
         <li><a href="#">Bangalore, India</a></li>
         <li><a href="#booking">Book a Session</a></li>
@@ -1334,23 +1588,54 @@
 </footer>
 
 <script>
-  // Scroll observer for fade-in
+  // ── Fade-in observer ──────────────────────────────────────
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
-  document.querySelectorAll(".fi-anim").forEach((el, i) => {
+  document.querySelectorAll(".fi-anim").forEach((el) => {
     const parent = el.parentElement;
     const siblings = parent ? [...parent.querySelectorAll(".fi-anim")] : [];
     const idx = siblings.indexOf(el);
-    el.style.transitionDelay = idx > 0 ? `${idx * 0.08}s` : "0s";
+    el.style.transitionDelay = idx > 0 ? (idx * 0.08) + "s" : "0s";
     io.observe(el);
   });
 
-  // Nav shadow on scroll
+  // ── Nav shadow on scroll ──────────────────────────────────
   window.addEventListener("scroll", () => {
     document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+  });
+
+  // ── Hamburger menu ────────────────────────────────────────
+  const hamburger = document.getElementById("hamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobLinks = document.querySelectorAll(".mob-link, .mob-cta");
+
+  hamburger.addEventListener("click", () => {
+    const isOpen = hamburger.classList.toggle("open");
+    mobileMenu.classList.toggle("open", isOpen);
+    hamburger.setAttribute("aria-expanded", isOpen);
+    document.body.style.overflow = isOpen ? "hidden" : "";
+  });
+
+  mobLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("open");
+      mobileMenu.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener("click", (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      hamburger.classList.remove("open");
+      mobileMenu.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    }
   });
 </script>
 </body>
