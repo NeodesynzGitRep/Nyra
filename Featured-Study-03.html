@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research | Nyra</title>
+  <meta name="description" content="Learn about Nyra Wellbeing's mission, vision, values, and the philosophy behind frequency-enhanced water technology.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+
+
+
+  <style>
+ #pdf-container {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  canvas {
+    display: block;
+    margin: 0 auto 16px auto;
+    background: white;
+    
+  }
+</style>
+
+
+
+
+
+
+</head>
+<body class="is-loading">
+  <div class="preloader" data-preloader aria-hidden="true">
+    <div class="preloader__orb">
+      <span class="preloader__ring"></span>
+      <span class="preloader__ring"></span>
+      <span class="preloader__ring"></span>
+      <div class="preloader__logo-wrap">
+        <img class="preloader__logo" src="logo.svg" alt="Nyra logo">
+      </div>
+      <span class="preloader__label">Loading Nyra</span>
+    </div>
+  </div>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="index.html" aria-label="Nyra home"><img src="logo.svg" alt="Nyra"></a>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" data-nav-toggle><span></span></button>
+        <nav class="site-nav" data-site-nav aria-label="Primary">
+          <ul class="site-nav__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" >About Us</a></li>
+            <li><a href="research.html" aria-current="page">Research</a></li>
+          </ul>
+          <a class="button" href="#join">Download App</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      
+
+
+      <section class="section section-surface">
+  <div class="container">
+    <div id="pdf-container"></div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+  const pdfUrl = 'Research-3.pdf';
+
+  const pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  const container = document.getElementById('pdf-container');
+
+  function renderPDF() {
+    container.innerHTML = '';
+
+    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        pdf.getPage(pageNum).then(page => {
+
+          const viewport = page.getViewport({ scale: 1 });
+          const containerWidth = container.clientWidth;
+
+          const scale = containerWidth / viewport.width;
+          const scaledViewport = page.getViewport({ scale });
+
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+
+          canvas.width = scaledViewport.width;
+          canvas.height = scaledViewport.height;
+
+          container.appendChild(canvas);
+
+          page.render({
+            canvasContext: context,
+            viewport: scaledViewport
+          });
+        });
+      }
+    });
+  }
+
+  renderPDF();
+
+  // Re-render on resize (auto-fit)
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(renderPDF, 300);
+  });
+</script>
+
+     
+
+      <section class="section section-surface" id="join">
+        <div class="container cta-band">
+          <div>
+            <div class="eyebrow" style="color: rgba(255,255,255,0.8);">Join the Nyra Movement</div>
+            <h2 class="heading">Be part of a global community transforming wellness through frequency-enhanced <em>water.</em></h2>
+            
+          </div>
+          <div class="hero__actions" style="margin-top: 0;">
+            <a class="button-light" href="index.html">Back to Home</a>
+            <a class="button-ghost" href="research.html" style="color: white; border-color: rgba(255,255,255,0.24);">Read Research</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container faq-grid">
+          <div>
+            <div class="eyebrow">Frequently Asked Questions</div>
+            <h2 class="heading">Still curious? We are <em>here to help.</em></h2>
+            
+          </div>
+          <div>
+            <details class="faq-item" open><summary>What is energized water?</summary><p>Energized water is water that has been infused with specific frequencies that align with the body’s natural vibrations, enhancing hydration and wellbeing. Nyra describes this as creating hexagonal clusters that improve cellular absorption.</p></details>
+            <details class="faq-item"><summary>How does Nyra energize water?</summary><p>The Nyra app uses frequency patterns and sound vibrations delivered through a mobile device to charge water at a molecular level, using proprietary algorithms to restructure water for improved bioavailability.</p></details>
+            <details class="faq-item"><summary>Is this method safe?</summary><p>Nyra positions the method as non-invasive, eco-friendly, and aligned to natural resonance patterns found in healthy biological systems.</p></details>
+            <details class="faq-item"><summary>What benefits can I expect?</summary><p>Regular use may help improve cellular hydration, energy levels, emotional balance, immunity, and overall vitality, with users also reporting support for meditation, sleep, and physical performance.</p></details>
+            <details class="faq-item"><summary>Do I need any special equipment?</summary><p>No. The experience is designed around just a mobile phone, the Nyra app, and clean drinking water.</p></details>
+            <details class="faq-item"><summary>How long does the charging process take?</summary><p>Typical sessions range from 3 to 10 minutes depending on the selected wellness goal.</p></details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div><a class="brand" href="index.html" aria-label="Nyra home"><img src="logo.svg" alt="Nyra"></a><p style="max-width: 360px; line-height: 1.85;">Nyra Wellbeing brings together hydration, ritual, and science in a calmer digital product story.</p></div>
+          <div><h3>Pages</h3><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="research.html">Research</a></li></ul></div>
+          <div>
+
+            <h3>Policies</h3>
+
+            <ul>
+
+              <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="refund-cancellation-policy.html">Refund & Cancellation</a></li>
+              <li><a href="medical-disclaimer.html">Refund & Cancellation</a></li>
+
+            </ul>
+
+          </div>
+          <div><h3>Contact</h3><ul><li><a href="mailto:wecare@nyrawellbeing.com">wecare@nyrawellbeing.com</a></li><li><a href="https://nyrawellbeing.com/about-us/" target="_blank" rel="noreferrer">Live About Page</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><span>&copy; <span data-year></span> Nyra. All rights reserved.</span><span>Made with intention.</span></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
