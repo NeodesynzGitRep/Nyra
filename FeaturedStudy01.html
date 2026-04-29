@@ -11,13 +11,17 @@
 
 
   <style>
- #pdf-container canvas {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 20px;
-  background: white;
-}
+ #pdf-container {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  canvas {
+    display: block;
+    margin: 0 auto 16px auto;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
 </style>
 
 
@@ -68,39 +72,52 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <script>
-const url = "Research-1.pdf";
+  const pdfUrl = 'Research-1.pdf';
 
-const pdfjsLib = window['pdfjs-dist/build/pdf'];
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  const pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-const container = document.getElementById("pdf-container");
+  const container = document.getElementById('pdf-container');
 
-pdfjsLib.getDocument(url).promise.then(pdf => {
-  for (let i = 1; i <= pdf.numPages; i++) {
-    pdf.getPage(i).then(page => {
+  function renderPDF() {
+    container.innerHTML = '';
 
-      const viewport = page.getViewport({ scale: 1.5 });
+    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        pdf.getPage(pageNum).then(page => {
 
-      const canvas = document.createElement("canvas");
-      const context = canvas.getContext("2d");
+          const viewport = page.getViewport({ scale: 1 });
+          const containerWidth = container.clientWidth;
 
-      canvas.width = container.clientWidth; // 🔥 full width
-      canvas.height = viewport.height * (canvas.width / viewport.width);
+          const scale = containerWidth / viewport.width;
+          const scaledViewport = page.getViewport({ scale });
 
-      const scaledViewport = page.getViewport({
-        scale: canvas.width / viewport.width
-      });
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
 
-      container.appendChild(canvas);
+          canvas.width = scaledViewport.width;
+          canvas.height = scaledViewport.height;
 
-      page.render({
-        canvasContext: context,
-        viewport: scaledViewport
-      });
+          container.appendChild(canvas);
+
+          page.render({
+            canvasContext: context,
+            viewport: scaledViewport
+          });
+        });
+      }
     });
   }
-});
+
+  renderPDF();
+
+  // Re-render on resize (auto-fit)
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(renderPDF, 300);
+  });
 </script>
 
      
